@@ -3,10 +3,16 @@ console.log("CRM Iniciado");
 import { subscribe, getState } from "./state/state.js";
 import { setState } from "./state/state.js";
 import { getLeads, saveLeads } from "./services/storage.js";
+import { addLead } from "./services/crmServices.js";
+
+//Outro método de inserção de dados
+// a cada 2s depois de reiniciar o site
+//Sobrescreve todo o array anterior com o novo dado do array
 
 setTimeout(() => {
-  setState({
-    leads: [{ name: "Gumercindo", contato: "(16)99999-9999" }],
+  addLead({
+    name: "Genivaldo",
+    contact: "(16)11111-1111",
   });
 }, 2000);
 
