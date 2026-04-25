@@ -16,7 +16,9 @@ export function LeadList() {
     container.innerHTML = `
       <h2>Leads</h2>
       <ul>
-        ${leads.map(lead => `
+        ${leads
+          .map(
+            (lead) => `
           <li>
             <strong>${lead.name}</strong> - ${lead.contact}
             <em>(${lead.status})</em>
@@ -24,8 +26,13 @@ export function LeadList() {
             <button onclick="window.editLead('${lead.id}')">
             Editar
             </button>
+            <button onclick="window.deleteLead('${lead.id}')">
+             Excluir
+            </button>
           </li>
-        `).join("")}
+        `,
+          )
+          .join("")}
       </ul>
     `;
   }

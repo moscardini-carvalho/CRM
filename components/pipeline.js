@@ -33,6 +33,9 @@ export function Pipeline() {
               <button onclick="window.editLead('${lead.id}')">
                 Editar
               </button>
+              <button onclick="window.deleteLead('${lead.id}')">
+                Excluir
+              </button>
                 <strong>${lead.name}</strong>
                 <p>${lead.contact}</p>
 

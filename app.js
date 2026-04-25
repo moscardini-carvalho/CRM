@@ -5,6 +5,15 @@ import { LeadList } from "./components/leadList.js";
 import { changeStatus } from "./services/crmService.js";
 import { Pipeline } from "./components/pipeline.js";
 import { updateLead } from "./services/crmService.js";
+import { removeLead } from "./services/crmService.js";
+
+window.deleteLead = (id) => {
+  const confirmDelete = confirm("Tem certeza que quer remover esse Lead?");
+
+  if(!confirmDelete) return;
+
+  removeLead(id);
+}
 
 window.editLead = (id) => {
   const name = prompt("Novo nome do Lead: ");
