@@ -30,6 +30,9 @@ export function Pipeline() {
               .map(
                 (lead) => `
               <div class="card">
+              <button onclick="window.editLead('${lead.id}')">
+                Editar
+              </button>
                 <strong>${lead.name}</strong>
                 <p>${lead.contact}</p>
 

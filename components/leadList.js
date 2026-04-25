@@ -19,7 +19,11 @@ export function LeadList() {
         ${leads.map(lead => `
           <li>
             <strong>${lead.name}</strong> - ${lead.contact}
-            <em>(${lead.status || "novo"})</em>
+            <em>(${lead.status})</em>
+
+            <button onclick="window.editLead('${lead.id}')">
+            Editar
+            </button>
           </li>
         `).join("")}
       </ul>

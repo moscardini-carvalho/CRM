@@ -46,3 +46,15 @@ export function changeStatus(id, status) {
     leads: updatedLeads,
   });
 }
+
+export function updateLead(id, updatedData) {
+  const { leads } = getState();
+
+  const updatedLeads = leads.map((lead) =>
+    lead.id === id ? { ...lead, ...updatedData } : lead,
+  );
+
+  setState({
+    leads: updatedLeads,
+  });
+}

@@ -4,6 +4,20 @@ import { addLead } from "./services/crmService.js";
 import { LeadList } from "./components/leadList.js";
 import { changeStatus } from "./services/crmService.js";
 import { Pipeline } from "./components/pipeline.js";
+import { updateLead } from "./services/crmService.js";
+
+window.editLead = (id) => {
+  const name = prompt("Novo nome do Lead: ");
+  const contact = prompt("Novo contato do Lead: ");
+
+  if (!name || !contact) return;
+
+  updateLead(id, { name, contact });
+};
+
+window.updateStatus = (id, status) => {
+  changeStatus(id, status);
+};
 
 //Outro método de inserção de dados
 // a cada 2s depois de reiniciar o site
@@ -19,10 +33,6 @@ setTimeout(() => {
 function render(state) {}
 
 function init() {
-  window.updateStatus = (id, status) => {
-    changeStatus(id, status);
-  };
-
   subscribe((state) => {
     saveLeads(state.leads);
   });
