@@ -26,7 +26,6 @@ export function LeadList() {
     `;
   }
 
-  // 🔥 ESSA LINHA QUE FALTA
   render(getState());
 
   subscribe(render);

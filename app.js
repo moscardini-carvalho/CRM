@@ -2,6 +2,8 @@ import { subscribe, getState, setState } from "./state/state.js";
 import { getLeads, saveLeads } from "./services/storage.js";
 import { addLead } from "./services/crmService.js";
 import { LeadList } from "./components/leadList.js";
+import { changeStatus } from "./services/crmService.js";
+import { Pipeline } from "./components/pipeline.js";
 
 //Outro método de inserção de dados
 // a cada 2s depois de reiniciar o site
@@ -17,6 +19,10 @@ setTimeout(() => {
 function render(state) {}
 
 function init() {
+  window.updateStatus = (id, status) => {
+    changeStatus(id, status);
+  };
+
   subscribe((state) => {
     saveLeads(state.leads);
   });
@@ -26,6 +32,7 @@ function init() {
   setState({ leads });
 
   LeadList();
+  Pipeline();
 }
 
 init();

@@ -40,3 +40,22 @@ section div {
     padding: 16px;
     border-radius: 8px;
 }
+
+.pipeline {
+    display: flex;
+    gap: 10px;
+}
+
+.column {
+    flex: 1;
+    background: #1a1a1a;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.card {
+    background: #2a2a2a;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+}
