@@ -10,18 +10,26 @@ import { removeLead } from "./services/crmService.js";
 window.deleteLead = (id) => {
   const confirmDelete = confirm("Tem certeza que quer remover esse Lead?");
 
-  if(!confirmDelete) return;
+  if (!confirmDelete) return;
 
   removeLead(id);
-}
+};
 
 window.editLead = (id) => {
-  const name = prompt("Novo nome do Lead: ");
-  const contact = prompt("Novo contato do Lead: ");
+  const state = getState();
+  const lead = state.leads.find((l) => l.id === id);
 
-  if (!name || !contact) return;
+  if (!lead) return;
 
-  updateLead(id, { name, contact });
+  const newName = prompt("Novo nome:", lead.name);
+  const newContact = prompt("Novo contato:", lead.contact);
+
+  if (newName === null && newContact === null) return;
+
+  updateLead(id, {
+    name: newName || lead.name,
+    contact: newContact || lead.contact,
+  });
 };
 
 window.updateStatus = (id, status) => {
@@ -34,8 +42,8 @@ window.updateStatus = (id, status) => {
 /*
 setTimeout(() => {
   addLead({
-    name: "João Pedro Moscardini Carvalho",
-    contact: "(16)98100-0548",
+    name: "Heber Carvalho",
+    contact: "(16)98246-0112",
   });
 }, 2000);
 */
@@ -43,6 +51,8 @@ function render(state) {}
 
 function init() {
   subscribe((state) => {
+    if (!state || !state.leads) return;
+
     saveLeads(state.leads);
   });
 
